@@ -35,3 +35,15 @@ const electricityPrices = sampledData.map(item => parseFloat(item.elec));
 
 // Remember that circle needs radius (r) and center (cx, cy) to create it,
 // while rectangles need x, y, width, and height. You can use the electricity price to determine the height of the rectangle and set a fixed width.
+d3.select('#demo-2')
+    .append('svg')
+    .attr('width', 400)
+    .attr('height', 100)
+    .selectAll('rect')
+    .data(electricityPrices)
+    .join('rect')
+    .attr('x', (d, i) => i*60+30)
+    .attr('y', d => 100-d*100)
+    .attr('width', 20)
+    .attr('height', d=>d*100)
+    .attr('fill', '#ff9cff')
